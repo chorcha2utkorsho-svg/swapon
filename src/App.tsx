@@ -516,16 +516,15 @@ export default function App() {
           /* Welcome & Empty State Hero */
           <div className="my-auto py-8 px-4 flex flex-col items-center text-center animate-in fade-in duration-300">
             <div className="relative mb-4">
-              <div
-                className="w-16 h-16 rounded-2xl flex items-center justify-center text-white shadow-xl relative z-10 transition-transform hover:scale-105"
-                style={{ backgroundColor: selectedModel.color || '#38bdf8' }}
-              >
-                <Bot className="w-8 h-8" />
+              <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-sky-400 shadow-2xl shadow-sky-500/40 relative z-10 transition-transform hover:scale-105">
+                <img
+                  src="/app-icon.jpg"
+                  alt="স্বপন অ্যাপ আইকন"
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
               </div>
-              <div
-                className="absolute inset-0 rounded-2xl blur-xl opacity-50 -z-0"
-                style={{ backgroundColor: selectedModel.color || '#38bdf8' }}
-              />
+              <div className="absolute inset-0 rounded-full blur-xl opacity-50 -z-0 bg-sky-500" />
             </div>
 
             <h1 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight mb-2">

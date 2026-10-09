@@ -54,8 +54,13 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
 
         <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center font-bold text-white text-xs shadow-md shadow-sky-500/20">
-            স্ব
+          <div className="w-8 h-8 rounded-full overflow-hidden border-2 border-sky-400 shadow-md shadow-sky-500/30 shrink-0">
+            <img
+              src="/app-icon.jpg"
+              alt="স্বপন লোগো"
+              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
           </div>
           <span className="font-bold text-sm text-white tracking-tight">
             স্বপন

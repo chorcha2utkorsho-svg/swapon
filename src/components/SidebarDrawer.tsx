@@ -113,8 +113,13 @@ export const SidebarDrawer: React.FC<SidebarDrawerProps> = ({
         {/* Header */}
         <div className="p-4 border-b border-slate-800 shrink-0 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center font-bold text-white shadow-sm text-sm">
-              স্ব
+            <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-sky-400 shadow-md shadow-sky-500/30 shrink-0">
+              <img
+                src="/app-icon.jpg"
+                alt="স্বপন লোগো"
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
             </div>
             <div>
               <h2 className="text-sm font-bold text-white tracking-tight">স্বপন AI</h2>

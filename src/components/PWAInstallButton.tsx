@@ -60,8 +60,13 @@ export const PWAInstallButton: React.FC<PWAInstallButtonProps> = ({ className = 
             <div className="w-full max-w-sm rounded-2xl bg-slate-900 border border-slate-700/80 p-6 shadow-2xl text-slate-100">
               <div className="flex items-center justify-between pb-3 border-b border-slate-800">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-sky-500 to-indigo-600 flex items-center justify-center font-bold text-white shadow-inner text-sm">
-                    স্ব
+                  <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-sky-400 shadow-md shadow-sky-500/30 shrink-0">
+                    <img
+                      src="/app-icon.jpg"
+                      alt="স্বপন অ্যাপ"
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
                   </div>
                   <div>
                     <h3 className="text-base font-semibold text-white">Install on iPhone / iPad</h3>
