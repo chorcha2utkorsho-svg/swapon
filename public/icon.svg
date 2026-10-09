@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#1e1b4b" />
+      <stop offset="60%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#030712" />
+    </radialGradient>
+    <linearGradient id="neonGemini" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="neonOpenAI" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <linearGradient id="neonClaude" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb923c" />
+      <stop offset="100%" stop-color="#f43f5e" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGlow)" />
+  <rect width="504" height="504" x="4" y="4" rx="108" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="4" />
+
+  <!-- Orbit Rings -->
+  <circle cx="256" cy="256" r="140" fill="none" stroke="rgba(129, 140, 248, 0.2)" stroke-width="2" stroke-dasharray="6 8" />
+  <circle cx="256" cy="256" r="90" fill="none" stroke="rgba(56, 189, 248, 0.25)" stroke-width="2" />
+
+  <!-- Central Omni Core -->
+  <g filter="url(#glow)">
+    <polygon points="256,160 339,208 339,304 256,352 173,304 173,208" fill="url(#neonGemini)" opacity="0.9" />
+    <circle cx="256" cy="256" r="42" fill="#030712" />
+    
+    <!-- Spark / Four-pointed Star in Center -->
+    <path d="M256,224 C256,244 244,256 224,256 C244,256 256,268 256,288 C256,268 268,256 288,256 C268,256 256,244 256,224 Z" fill="#ffffff" />
+  </g>
+
+  <!-- Model Satellites -->
+  <!-- Gemini Blue Node -->
+  <g filter="url(#glow)">
+    <circle cx="256" cy="116" r="22" fill="url(#neonGemini)" />
+    <circle cx="256" cy="116" r="8" fill="#ffffff" />
+  </g>
+
+  <!-- Claude Orange/Red Node -->
+  <g filter="url(#glow)">
+    <circle cx="377" cy="326" r="20" fill="url(#neonClaude)" />
+    <circle cx="377" cy="326" r="7" fill="#ffffff" />
+  </g>
+
+  <!-- OpenAI Emerald/Cyan Node -->
+  <g filter="url(#glow)">
+    <circle cx="135" cy="326" r="20" fill="url(#neonOpenAI)" />
+    <circle cx="135" cy="326" r="7" fill="#ffffff" />
+  </g>
+</svg>

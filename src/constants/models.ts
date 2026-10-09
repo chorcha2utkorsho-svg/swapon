@@ -1,0 +1,143 @@
+import { AIModel } from '../types';
+
+export const AI_MODELS: AIModel[] = [
+  // Google Gemini Models
+  {
+    id: 'gemini-3.8-flash',
+    name: 'Gemini 3.8 Flash',
+    provider: 'google',
+    providerName: 'Google AI',
+    badge: 'Recommended',
+    description: 'Blazing fast, high-intelligence model for vibe coding, summarization, and agile Q&A.',
+    contextWindow: '1M tokens',
+    speedRating: 'Ultra Fast',
+    reasoningRating: 'Frontier',
+    color: '#38bdf8',
+    isDefault: true,
+  },
+  {
+    id: 'gemini-3.1-flash-lite',
+    name: 'Gemini 3.1 Flash Lite',
+    provider: 'google',
+    providerName: 'Google AI',
+    badge: 'Lite',
+    description: 'Sub-second response latency optimized for quick conversational turns and high throughput.',
+    contextWindow: '1M tokens',
+    speedRating: 'Ultra Fast',
+    reasoningRating: 'Standard',
+    color: '#818cf8',
+  },
+  {
+    id: 'gemini-3.1-pro-preview',
+    name: 'Gemini 3.1 Pro',
+    provider: 'google',
+    providerName: 'Google AI',
+    badge: 'Deep Reasoning',
+    description: 'Flagship reasoning and code architecture model for complex engineering & multi-step logic.',
+    contextWindow: '2M tokens',
+    speedRating: 'Fast',
+    reasoningRating: 'Frontier',
+    color: '#a855f7',
+  },
+
+  // OpenAI Models
+  {
+    id: 'gpt-4o',
+    name: 'GPT-4o',
+    provider: 'openai',
+    providerName: 'OpenAI',
+    badge: 'Omni',
+    description: 'OpenAI flagship multimodal intelligence, versatile across code, writing, and analysis.',
+    contextWindow: '128K tokens',
+    speedRating: 'Fast',
+    reasoningRating: 'Frontier',
+    color: '#10b981',
+  },
+  {
+    id: 'gpt-4o-mini',
+    name: 'GPT-4o mini',
+    provider: 'openai',
+    providerName: 'OpenAI',
+    badge: 'Fast & Lightweight',
+    description: 'Cost-efficient and fast workhorse for everyday prompts and code snippets.',
+    contextWindow: '128K tokens',
+    speedRating: 'Ultra Fast',
+    reasoningRating: 'High',
+    color: '#34d399',
+  },
+  {
+    id: 'o3-mini',
+    name: 'o3-mini',
+    provider: 'openai',
+    providerName: 'OpenAI',
+    badge: 'Reasoning',
+    description: 'Specialized STEM and coding reasoning model with deliberative chain-of-thought.',
+    contextWindow: '200K tokens',
+    speedRating: 'Moderate',
+    reasoningRating: 'Frontier',
+    color: '#059669',
+  },
+
+  // Anthropic Claude Models
+  {
+    id: 'claude-3-7-sonnet-20250219',
+    name: 'Claude 3.7 Sonnet',
+    provider: 'anthropic',
+    providerName: 'Anthropic',
+    badge: 'Hybrid Thinker',
+    description: 'Anthropic state-of-the-art hybrid reasoning model with superior code fluency and nuance.',
+    contextWindow: '200K tokens',
+    speedRating: 'Fast',
+    reasoningRating: 'Frontier',
+    color: '#f97316',
+  },
+  {
+    id: 'claude-3-5-haiku-20241022',
+    name: 'Claude 3.5 Haiku',
+    provider: 'anthropic',
+    providerName: 'Anthropic',
+    badge: 'Speed',
+    description: 'Swift conversational intelligence with sharp instruction following.',
+    contextWindow: '200K tokens',
+    speedRating: 'Ultra Fast',
+    reasoningRating: 'High',
+    color: '#fb923c',
+  },
+
+  // OpenRouter / Open Source
+  {
+    id: 'deepseek/deepseek-chat',
+    name: 'DeepSeek V3',
+    provider: 'openrouter',
+    providerName: 'DeepSeek (OpenRouter)',
+    badge: 'Open Weights',
+    description: 'High-capability 671B MoE model delivering outstanding programming & math benchmarks.',
+    contextWindow: '64K tokens',
+    speedRating: 'Fast',
+    reasoningRating: 'High',
+    color: '#06b6d4',
+  },
+  {
+    id: 'deepseek/deepseek-r1',
+    name: 'DeepSeek R1',
+    provider: 'openrouter',
+    providerName: 'DeepSeek (OpenRouter)',
+    badge: 'Reasoning',
+    description: 'Open reasoning model using reinforcement learning for deep algorithmic problems.',
+    contextWindow: '64K tokens',
+    speedRating: 'Moderate',
+    reasoningRating: 'Frontier',
+    color: '#3b82f6',
+  },
+];
+
+export const DEFAULT_MODEL_ID = 'gemini-3.8-flash';
+export const DEFAULT_COMPARE_MODEL_ID = 'gpt-4o';
+
+export const QUICK_PROMPTS = [
+  { label: '⚡ Vibe Code', prompt: 'Build a clean, interactive React counter component with smooth animations and Tailwind CSS.' },
+  { label: '🧠 Explain Logic', prompt: 'Explain how async/await works under the hood with the JavaScript event loop, microtasks, and macrotasks.' },
+  { label: '🛠️ Refactor Code', prompt: 'Here is my code. Can you review it for performance bottlenecks, edge cases, and clean architecture?' },
+  { label: '💡 App Pitch', prompt: 'Generate 3 high-impact mobile app ideas using AI Studio Build and Vibe Coding.' },
+  { label: '🔍 Debug Regex', prompt: 'Write and explain a regex that validates email addresses while avoiding catastrophic backtracking.' },
+];
