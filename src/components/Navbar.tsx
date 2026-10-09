@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Sliders, BookOpen, Sun, Moon, Swords, Share, Download, Sparkles, Compass } from 'lucide-react';
+import { Menu, Sliders, BookOpen, Sun, Moon, Swords, Share, Download, Sparkles, Compass, Calendar, TrendingUp } from 'lucide-react';
 import { ModelSelector } from './ModelSelector';
 import { PWAInstallButton } from './PWAInstallButton';
 import { AI_MODELS } from '../constants/models';
@@ -17,6 +17,8 @@ interface NavbarProps {
   onOpenSettings: () => void;
   onOpenGuide: () => void;
   onOpenDirectory: () => void;
+  onOpenPlanner: () => void;
+  onOpenFinance: () => void;
   onExportCurrent: () => void;
   hasMessages: boolean;
 }
@@ -34,6 +36,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenSettings,
   onOpenGuide,
   onOpenDirectory,
+  onOpenPlanner,
+  onOpenFinance,
   onExportCurrent,
   hasMessages,
 }) => {
@@ -94,8 +98,28 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
       </div>
 
-      {/* Right side: Directory, Install, Export, Theme, Guide, Settings */}
+      {/* Right side: Finance, Planner, Directory, Install, Export, Theme, Guide, Settings */}
       <div className="flex items-center gap-1 sm:gap-1.5">
+        {/* Cost Tracker & Prosperity Button */}
+        <button
+          onClick={onOpenFinance}
+          title="খরচ ট্র্যাকার, বাজেট মেকার ও সমৃদ্ধি প্ল্যানার"
+          className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 border border-emerald-500/30 text-xs font-semibold transition active:scale-95 shadow-sm"
+        >
+          <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
+          <span className="hidden sm:inline">বাজেট ও সমৃদ্ধি</span>
+        </button>
+
+        {/* Daily Planner Button */}
+        <button
+          onClick={onOpenPlanner}
+          title="ডেইলি প্ল্যানার (আজকের রুটিন ও কাজ)"
+          className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 text-xs font-semibold transition active:scale-95 shadow-sm"
+        >
+          <Calendar className="w-3.5 h-3.5 text-amber-400" />
+          <span className="hidden sm:inline">ডেইলি প্ল্যানার</span>
+        </button>
+
         {/* AI Models Directory Trigger */}
         <button
           onClick={onOpenDirectory}

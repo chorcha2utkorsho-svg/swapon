@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { ChatSession } from '../types';
-import { Plus, MessageSquare, Trash2, Edit2, Check, X, Search, Download, Upload, Sliders, BookOpen, ChevronRight, Compass } from 'lucide-react';
+import { Plus, MessageSquare, Trash2, Edit2, Check, X, Search, Download, Upload, Sliders, BookOpen, ChevronRight, Compass, Calendar, TrendingUp } from 'lucide-react';
 import { AI_MODELS } from '../constants/models';
 
 interface SidebarDrawerProps {
@@ -17,6 +17,8 @@ interface SidebarDrawerProps {
   onOpenSettings: () => void;
   onOpenGuide: () => void;
   onOpenDirectory?: () => void;
+  onOpenPlanner?: () => void;
+  onOpenFinance?: () => void;
 }
 
 export const SidebarDrawer: React.FC<SidebarDrawerProps> = ({
@@ -33,6 +35,8 @@ export const SidebarDrawer: React.FC<SidebarDrawerProps> = ({
   onOpenSettings,
   onOpenGuide,
   onOpenDirectory,
+  onOpenPlanner,
+  onOpenFinance,
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [editingSessionId, setEditingSessionId] = useState<string | null>(null);
@@ -275,6 +279,38 @@ export const SidebarDrawer: React.FC<SidebarDrawerProps> = ({
               />
             </label>
           </div>
+
+          {onOpenFinance && (
+            <button
+              onClick={() => {
+                onClose();
+                onOpenFinance();
+              }}
+              className="w-full flex items-center justify-between p-2 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 transition text-[11px] font-semibold border border-emerald-500/30"
+            >
+              <span className="flex items-center gap-2">
+                <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
+                <span>💰 খরচ, বাজেট ও সমৃদ্ধি প্ল্যানার</span>
+              </span>
+              <ChevronRight className="w-3.5 h-3.5 text-emerald-400" />
+            </button>
+          )}
+
+          {onOpenPlanner && (
+            <button
+              onClick={() => {
+                onClose();
+                onOpenPlanner();
+              }}
+              className="w-full flex items-center justify-between p-2 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 transition text-[11px] font-semibold border border-amber-500/30"
+            >
+              <span className="flex items-center gap-2">
+                <Calendar className="w-3.5 h-3.5 text-amber-400" />
+                <span>📅 ডেইলি প্ল্যানার (স্মার্ট রুটিন)</span>
+              </span>
+              <ChevronRight className="w-3.5 h-3.5 text-amber-400" />
+            </button>
+          )}
 
           {onOpenDirectory && (
             <button

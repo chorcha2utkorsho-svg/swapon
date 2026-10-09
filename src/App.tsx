@@ -23,10 +23,12 @@ import { ExportModal } from './components/ExportModal';
 import { OfflineIndicator } from './components/OfflineIndicator';
 import { ArenaView } from './components/ArenaView';
 import { AIModelDirectoryDrawer } from './components/AIModelDirectoryDrawer';
+import { DailyPlannerModal } from './components/DailyPlannerModal';
+import { FinanceProsperityModal } from './components/FinanceProsperityModal';
 import { BEST_AI_MODELS } from './constants/aiDirectory';
 import { useSpeechSynthesis } from './hooks/useSpeechSynthesis';
 import { exportAllSessionsAsJSON } from './utils/export';
-import { Sparkles, Swords, Plus, Bot, Layers, Zap, Compass, Globe, ExternalLink, MessageSquare } from 'lucide-react';
+import { Sparkles, Swords, Plus, Bot, Layers, Zap, Compass, Globe, ExternalLink, MessageSquare, Calendar, TrendingUp } from 'lucide-react';
 
 const STORAGE_KEYS = {
   SESSIONS: 'omniai_sessions_v1',
@@ -102,6 +104,8 @@ export default function App() {
   const [isGuideOpen, setIsGuideOpen] = useState(false);
   const [isExportOpen, setIsExportOpen] = useState(false);
   const [isDirectoryOpen, setIsDirectoryOpen] = useState(false);
+  const [isPlannerOpen, setIsPlannerOpen] = useState(false);
+  const [isFinanceOpen, setIsFinanceOpen] = useState(false);
   const [serverStatus, setServerStatus] = useState<ServerStatus | null>(null);
 
   // Arena Mode specific state
@@ -500,6 +504,8 @@ export default function App() {
         onOpenSettings={() => setIsSettingsOpen(true)}
         onOpenGuide={() => setIsGuideOpen(true)}
         onOpenDirectory={() => setIsDirectoryOpen(true)}
+        onOpenPlanner={() => setIsPlannerOpen(true)}
+        onOpenFinance={() => setIsFinanceOpen(true)}
         onExportCurrent={() => setIsExportOpen(true)}
         hasMessages={currentSession.messages.length > 0}
       />
@@ -531,6 +537,43 @@ export default function App() {
               <strong className="text-emerald-400">OpenAI GPT</strong>, and{' '}
               <strong className="text-amber-400">Claude</strong> from one unified mobile interface.
             </p>
+
+            {/* Quick Action Banners: Daily Planner & Prosperity Hub */}
+            <div className="w-full max-w-3xl grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-4">
+              {/* Daily Planner Card */}
+              <button
+                onClick={() => setIsPlannerOpen(true)}
+                className="flex items-center justify-between p-3 rounded-2xl bg-gradient-to-r from-amber-500/15 via-orange-500/15 to-slate-900 hover:from-amber-500/25 border border-amber-500/30 text-left transition active:scale-98 group shadow-md"
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-600 flex items-center justify-center text-white shadow-md shadow-amber-500/20 shrink-0">
+                    <Calendar className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <span className="font-bold text-xs text-white block">📅 ডেইলি প্ল্যানার ও রুটিন</span>
+                    <span className="text-[10px] text-slate-300">দৈনিক কাজ, টাইম-ব্লকিং ও পানি ট্র্যাকার</span>
+                  </div>
+                </div>
+                <span className="text-amber-400 text-xs font-bold group-hover:translate-x-1 transition-transform">→</span>
+              </button>
+
+              {/* Cost Tracker & Prosperity Hub Card */}
+              <button
+                onClick={() => setIsFinanceOpen(true)}
+                className="flex items-center justify-between p-3 rounded-2xl bg-gradient-to-r from-emerald-500/15 via-teal-500/15 to-slate-900 hover:from-emerald-500/25 border border-emerald-500/30 text-left transition active:scale-98 group shadow-md"
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-600 flex items-center justify-center text-white shadow-md shadow-emerald-500/20 shrink-0">
+                    <TrendingUp className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <span className="font-bold text-xs text-white block">💰 খরচ, বাজেট ও সমৃদ্ধি প্ল্যানার</span>
+                    <span className="text-[10px] text-slate-300">দৈনিক খরচ, মাসিক বাজেট ও ৫০/৩০/২০ সঞ্চয়</span>
+                  </div>
+                </div>
+                <span className="text-emerald-400 text-xs font-bold group-hover:translate-x-1 transition-transform">→</span>
+              </button>
+            </div>
 
             {/* Featured AI Models Directory Cards */}
             <div className="w-full max-w-3xl space-y-3 mb-6">
@@ -727,6 +770,8 @@ export default function App() {
         onOpenSettings={() => setIsSettingsOpen(true)}
         onOpenGuide={() => setIsGuideOpen(true)}
         onOpenDirectory={() => setIsDirectoryOpen(true)}
+        onOpenPlanner={() => setIsPlannerOpen(true)}
+        onOpenFinance={() => setIsFinanceOpen(true)}
       />
 
       {/* Settings Modal */}
@@ -755,6 +800,16 @@ export default function App() {
         }}
       />
 
+      {/* Floating Fast Trigger for Daily Planner */}
+      <button
+        onClick={() => setIsPlannerOpen(true)}
+        title="ডেইলি প্ল্যানার (আজকের রুটিন)"
+        className="fixed left-3 bottom-24 sm:bottom-28 z-30 flex items-center gap-1.5 px-3 py-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white text-xs font-bold shadow-xl shadow-amber-500/25 border border-amber-400/40 transition active:scale-95 group"
+      >
+        <Calendar className="w-4 h-4 text-white" />
+        <span className="hidden xs:inline">📅 ডেইলি প্ল্যানার</span>
+      </button>
+
       {/* Floating Fast Trigger for AI Model Directory */}
       <button
         onClick={() => setIsDirectoryOpen(true)}
@@ -777,6 +832,20 @@ export default function App() {
         isOpen={isDirectoryOpen}
         onClose={() => setIsDirectoryOpen(false)}
         onSelectInAppModel={handleSelectModel}
+      />
+
+      {/* Daily Planner Modal */}
+      <DailyPlannerModal
+        isOpen={isPlannerOpen}
+        onClose={() => setIsPlannerOpen(false)}
+        settings={settings}
+      />
+
+      {/* Cost Tracker, Budget Maker & Prosperity Planner Modal */}
+      <FinanceProsperityModal
+        isOpen={isFinanceOpen}
+        onClose={() => setIsFinanceOpen(false)}
+        settings={settings}
       />
     </div>
   );

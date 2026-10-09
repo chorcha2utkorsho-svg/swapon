@@ -63,3 +63,62 @@ export interface ServerStatus {
   hasServerAnthropicKey: boolean;
   defaultModel: string;
 }
+
+export type Priority = 'high' | 'medium' | 'low';
+export type TimePeriod = 'morning' | 'afternoon' | 'evening' | 'night';
+
+export interface PlannerTask {
+  id: string;
+  text: string;
+  time?: string;
+  priority: Priority;
+  period: TimePeriod;
+  completed: boolean;
+}
+
+export interface DayPlan {
+  date: string; // YYYY-MM-DD
+  tasks: PlannerTask[];
+  notes: string;
+  waterGlasses: number;
+  mood?: 'happy' | 'productive' | 'neutral' | 'tired';
+}
+
+export type ExpenseCategory = 'food' | 'transport' | 'bills' | 'shopping' | 'health' | 'education' | 'other';
+export type PaymentMethod = 'cash' | 'mfs' | 'bank';
+
+export interface ExpenseItem {
+  id: string;
+  title: string;
+  amount: number;
+  category: ExpenseCategory;
+  date: string; // YYYY-MM-DD
+  paymentMethod: PaymentMethod;
+  note?: string;
+}
+
+export interface IncomeItem {
+  id: string;
+  title: string;
+  amount: number;
+  date: string; // YYYY-MM-DD
+  source: string;
+}
+
+export interface ProsperityGoal {
+  id: string;
+  title: string;
+  targetAmount: number;
+  currentAmount: number;
+  deadline?: string;
+  category: 'emergency' | 'investment' | 'asset' | 'dream';
+}
+
+export interface FinanceData {
+  currency: string;
+  monthlyBudget: number;
+  categoryBudgets: Record<string, number>;
+  expenses: ExpenseItem[];
+  incomes: IncomeItem[];
+  goals: ProsperityGoal[];
+}
